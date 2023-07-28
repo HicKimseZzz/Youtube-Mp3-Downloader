@@ -4,9 +4,9 @@ from time import sleep
 import os
 import shutil
 
-dirr = r"C:\Users\YourPcName\Desktop\Mp3s"
+dirr = r"C:\Users\YourPcName\Desktop\PlaceWhereYouWillStoreYourMp3s"
 dir2 = r"C:\Users\YourPcName\Desktop"
-dirD = r"C:\Users\YourPcName\Desktop\PyMP3"
+dirD = r"C:\Users\YourPcName\Desktop\ProjectFile"
 
 init(autoreset=False)
 
