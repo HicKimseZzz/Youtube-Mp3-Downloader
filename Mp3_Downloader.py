@@ -4,9 +4,9 @@ from time import sleep
 import os
 import shutil
 
-dirr = r"C:\Users\alana\Desktop\Mp3s"
-dir2 = r"C:\Users\alana\Desktop"
-dirD = r"C:\Users\alana\Desktop\PyMP3"
+dirr = r"C:\Users\YourPcName\Desktop\Mp3s"
+dir2 = r"C:\Users\YourPcName\Desktop"
+dirD = r"C:\Users\YourPcName\Desktop\PyMP3"
 
 init(autoreset=False)
 
