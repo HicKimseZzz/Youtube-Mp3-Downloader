@@ -4,7 +4,7 @@ from time import sleep
 import os
 
 dirr = r"C:\Users\YourPcName\Desktop\PlaceWhereYouWillStoreYourMp3s"
-dir2 = r"C:\Users\YourPcName\Desktop
+dir2 = r"C:\Users\YourPcName\Desktop"
 
 init(autoreset=False)
 
