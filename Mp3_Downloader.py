@@ -2,7 +2,6 @@ from pytube import YouTube
 from colorama import Fore,init,Back,Style
 from time import sleep
 import os
-import shutil
 
 dirr = r"C:\Users\YourPcName\Desktop\PlaceWhereYouWillStoreYourMp3s"
 dir2 = r"C:\Users\YourPcName\Desktop"
