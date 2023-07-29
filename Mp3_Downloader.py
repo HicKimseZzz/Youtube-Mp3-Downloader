@@ -1,15 +1,15 @@
 from pytube import YouTube
-from colorama import Fore,init,Back,Style
 from time import sleep
 import os
+import shutil
 
-dirr = r"C:\Users\YourPcName\Desktop\PlaceWhereYouWillStoreYourMp3s"
-dir2 = r"C:\Users\YourPcName\Desktop"
-
-init(autoreset=False)
+dir1 = r""
+dir2 = r""
 
 while True:
-    link = input(Fore.RED + Back.WHITE + "Please Write Youtube Link: ")
+    dir2 = input("Please Write The Directory That This File Is In: ")
+    dir1 = input("Please Write The Directory Where The Mp3s Will Go: ")
+    link = input("Please Write Youtube Link: ")
 
     yt = YouTube(link)
     downYt = yt.title + ".mp4"
@@ -23,18 +23,16 @@ while True:
         if file1 == downYt:
             print(file1)
             print("Finded")
-            shutil.move(dir2 + f"\{file1}",dirr)
+            shutil.move(dir2 + f"\{file1}",dir1)
             break
     choise = input("To Download Again Write y.To Close Write n.To Make MP3s Write m: ")
-    sleep(1)
     if choise == "y":
         print("Oke")
     elif choise == "n":
         exit()
     elif choise == "m":
-        print("Deneme")
-        for file in os.listdir(dirr):
-            os.rename(dirr + f"\{file}",dirr + f"\{file}".replace("mp4","mp3"))
+        for file in os.listdir(dir1):
+            os.rename(dir1 + f"\{file}",dir1 + f"\{file}".replace("mp4","mp3"))
         print("Finished!")
         sleep(1)
         exit()
