@@ -1,16 +1,15 @@
+from tkinter import *
+from tkinter import ttk
+import tkinter as tk
+from ctypes import windll
 from pytube import YouTube
-from time import sleep
 import os
 import shutil
 
 dir1 = r""
 dir2 = r""
 
-while True:
-    dir2 = input("Please Write The Directory That This File Is In: ")
-    dir1 = input("Please Write The Directory Where The Mp3s Will Go: ")
-    link = input("Please Write Youtube Link: ")
-
+def download():
     yt = YouTube(link)
     downYt = yt.title + ".mp4"
     yr = yt.streams.get_highest_resolution()
@@ -25,18 +24,36 @@ while True:
             print("Finded")
             shutil.move(dir2 + f"\{file1}",dir1)
             break
-    choise = input("To Download Again Write y.To Close Write n.To Make MP3s Write m: ")
-    if choise == "y":
-        print("Oke")
-    elif choise == "n":
-        exit()
-    elif choise == "m":
-        for file in os.listdir(dir1):
+
+def close():
+    exit()
+
+def convert():
+    for file in os.listdir(dir1):
             os.rename(dir1 + f"\{file}",dir1 + f"\{file}".replace("mp4","mp3"))
-        print("Finished!")
-        sleep(1)
-        exit()
-    else:
-        print("Error")
-        sleep(1)
-        exit()
+
+window = Tk()
+windll.shcore.SetProcessDpiAwareness(1)
+window.geometry("850x525")
+window.title("Youtube Mp3 Downloader")
+window.config(background="#242424") 
+
+maintext = Label(window,text="Mp3 Downloader",font=("Cascadia Code",40,"bold"),fg="#e8e8e8",bg="#242424")
+maintext.pack()
+
+
+frame_link = Frame(master=window,bg="#242424")
+linkStr = tk.StringVar()
+entry_link = Entry(master=frame_link,width=45,font=("Cascadia Code",10),textvariable=linkStr)
+linkBut = Button(master=frame_link,text="Download",command=download,font=("Cascadia Code",10),fg="#e8e8e8",bg="#222222",activebackground="#1D1D1D",activeforeground="#FAFBFB",relief=FLAT)
+
+mp3But = Button(master=window,text="Convert",font=("Cascadia Code",10),fg="#e8e8e8",bg="#222222",activebackground="#1D1D1D",activeforeground="#FAFBFB",relief=FLAT)
+
+frame_link.pack(pady=100)
+entry_link.pack(side = "left",padx= 10)
+linkBut.pack(padx=10)
+mp3But.pack(pady=10)
+
+window.iconbitmap("app.ico")
+
+window.mainloop()
