@@ -6,39 +6,30 @@ from pytube import YouTube
 import os
 import shutil
 
-dir1 = r""
-dir2 = r""
 
 def get_dir1():
     dir1 = entry_dir1.get()
-    print(dir1)
+    return dir1
 
 def get_dir2():
     dir2 = entry_dir2.get()
-    print(dir2)
+    return dir2
 
 def download():
     link = entry_link.get()
     yt = YouTube(link)
     downYt = yt.title + ".mp4"
     yr = yt.streams.get_highest_resolution()
-    print(yr)
-    print("---------------------------")
-    print(downYt)
 
-    print("Your Video Is Downloading")
     yr.download()
-    print("Video Is Downloaded!")
-    for file1 in os.listdir(dir2):
+    for file1 in os.listdir(get_dir2()):
         if file1 == downYt:
-            print(file1)
-            print("Finded")
-            shutil.move(dir2 + f"\{file1}",dir1)
+            shutil.move(get_dir2() + f"\{file1}",get_dir1())
             break
 
 def convert():
-    for file in os.listdir(dir1):
-            os.rename(dir1 + f"\{file}",dir1 + f"\{file}".replace("mp4","mp3"))
+    for file in os.listdir(get_dir1()):
+            os.rename(get_dir1() + f"\{file}",get_dir1() + f"\{file}".replace("mp4","mp3"))
 
 window = Tk()
 windll.shcore.SetProcessDpiAwareness(1)
@@ -87,7 +78,5 @@ link_text = Label(master=frame_link,text="Youtube Link",font=("Cascadia Code",10
 link_text.pack(pady=5)
 
 mp3But.pack(pady=10)
-
-#window.iconbitmap("app.ico")
 
 window.mainloop()
